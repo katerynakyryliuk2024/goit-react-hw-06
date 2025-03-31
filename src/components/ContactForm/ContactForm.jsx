@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import "yup-phone";
+import { useSelector } from "react-redux";
 
 const phoneRegExp = /^(?:\+38)?0\d{9}$/;
 
@@ -19,6 +20,8 @@ const UserSchema = Yup.object().shape({
 });
 
 export default function ContactForm({ onAdd }) {
+  useSelector((state) => state.contacts.datas);
+
   const handleSubmit = (values, actions) => {
     console.log("handleSubmit", values);
     onAdd(values);
