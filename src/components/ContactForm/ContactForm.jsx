@@ -3,7 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import "yup-phone";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const phoneRegExp = /^(?:\+38)?0\d{9}$/;
 
@@ -19,12 +20,18 @@ const UserSchema = Yup.object().shape({
     .required("This field is required"),
 });
 
-export default function ContactForm({ onAdd }) {
-  useSelector((state) => state.contacts.datas);
+export default function ContactForm() {
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
     console.log("handleSubmit", values);
-    onAdd(values);
+    dispatch(
+      addContact({
+        name: values.name,
+        number: values.number,
+        id: nanoid(),
+      })
+    );
     actions.resetForm();
   };
   return (
