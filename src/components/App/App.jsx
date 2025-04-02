@@ -1,21 +1,20 @@
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
-import { useState, useEffect } from "react";
-import İnitialData from "../data.json";
+//import { useState, useEffect } from "react";
 
 export default function App() {
-  const [data, setData] = useState(() => {
-    const savedData = JSON.parse(window.localStorage.getItem("savedData"));
+  // const [data, setData] = useState(() => {
+  //   const savedData = JSON.parse(window.localStorage.getItem("savedData"));
 
-    return savedData ? savedData : İnitialData;
-  });
+  //   return savedData ? savedData : İnitialData;
+  // });
 
   //const [filter, setFilter] = useState("");
 
-  useEffect(() => {
-    window.localStorage.setItem("savedData", JSON.stringify(data));
-  }, [data]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("savedData", JSON.stringify(data));
+  // }, [data]);
 
   // const addData = (values) => {
   //   const newData = {
